@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     return res.send('Express Typescript on Vercel');
 });
 app.get('/ping', (req, res) => {
-    return res.send('pong 🏓');
+    return res.send('pong 🏓 !');
 });
 const handleListen = () => {
     console.log(`server is up and running on port: ${PORT}`);

@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/ping', (req, res) => {
-  return res.send('pong 🏓');
+  return res.send('pong 🏓 !');
 });
 
 const handleListen = (): void => {
