@@ -3,7 +3,7 @@ import cors from 'cors';
 import { appRouter } from './src/routes/config';
 
 const PORT = process?.env?.PORT ?? 3000;
-export const app = express();
+const app = express();
 
 app.use(cors());
 app.use(express.json());
@@ -15,5 +15,3 @@ const handleListen = (): void => {
 };
 
 app.listen(PORT, handleListen);
-
-module.exports = app;
