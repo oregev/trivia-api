@@ -1,18 +1,22 @@
-import { prisma } from '../../prisma';
-import { printError } from '../utils';
-export const getCategoriesService = async () => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getCategoryService = exports.getCategoriesService = void 0;
+const prisma_1 = require("../../prisma");
+const utils_1 = require("../utils");
+const getCategoriesService = async () => {
     try {
-        const categories = await prisma.category.findMany({});
+        const categories = await prisma_1.prisma.category.findMany({});
         return categories;
     }
     catch (error) {
-        printError(error, getCategoriesService.name);
+        (0, utils_1.printError)(error, exports.getCategoriesService.name);
         throw error;
     }
 };
-export const getCategoryService = async (categoryName) => {
+exports.getCategoriesService = getCategoriesService;
+const getCategoryService = async (categoryName) => {
     try {
-        const category = await prisma.category.findUnique({
+        const category = await prisma_1.prisma.category.findUnique({
             where: {
                 name: categoryName,
             },
@@ -20,7 +24,8 @@ export const getCategoryService = async (categoryName) => {
         return category;
     }
     catch (error) {
-        printError(error, getCategoriesService.name);
+        (0, utils_1.printError)(error, exports.getCategoriesService.name);
         throw error;
     }
 };
+exports.getCategoryService = getCategoryService;

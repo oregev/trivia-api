@@ -1,4 +1,7 @@
-export const postResultsController = async (req, res) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.postResultsController = void 0;
+const postResultsController = async (req, res) => {
     const answers = req.body.answers;
     console.log({ answers });
     // Calculate the results here.
@@ -13,3 +16,4 @@ export const postResultsController = async (req, res) => {
     // res.sendStatus(500);
     //   }
 };
+exports.postResultsController = postResultsController;

@@ -1,6 +1,9 @@
-import { Prisma } from '@prisma/client';
-export const printError = (error, location) => {
-    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.printError = void 0;
+const client_1 = require("@prisma/client");
+const printError = (error, location) => {
+    if (error instanceof client_1.Prisma.PrismaClientKnownRequestError) {
         const { code } = error;
         console.error(`DB Error @ ${location} - code: ${code}`);
     }
@@ -8,3 +11,4 @@ export const printError = (error, location) => {
         console.error(`Error @ ${location}`, error);
     }
 };
+exports.printError = printError;

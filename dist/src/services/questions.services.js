@@ -1,13 +1,16 @@
-import { prisma } from '../../prisma';
-import { printError } from '../utils';
-export const getQuestionsService = async ({ categoryId, }) => {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getQuestionsService = void 0;
+const prisma_1 = require("../../prisma");
+const utils_1 = require("../utils");
+const getQuestionsService = async ({ categoryId, }) => {
     try {
-        const category = await prisma.category.findUnique({
+        const category = await prisma_1.prisma.category.findUnique({
             where: {
                 id: categoryId,
             },
         });
-        const questions = await prisma.question.findMany({
+        const questions = await prisma_1.prisma.question.findMany({
             where: {
                 category: { contains: category === null || category === void 0 ? void 0 : category.name },
             },
@@ -16,7 +19,8 @@ export const getQuestionsService = async ({ categoryId, }) => {
         return questions;
     }
     catch (error) {
-        printError(error, getQuestionsService.name);
+        (0, utils_1.printError)(error, exports.getQuestionsService.name);
         throw error;
     }
 };
+exports.getQuestionsService = getQuestionsService;

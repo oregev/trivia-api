@@ -1,41 +1,45 @@
-import { randomUUID } from 'crypto';
-import { prisma } from '../../prisma';
-import { printError } from '../utils';
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getWeeklyQuizService = exports.getQuizService = void 0;
+const crypto_1 = require("crypto");
+const prisma_1 = require("../../prisma");
+const utils_1 = require("../utils");
 const getRandomQuestions = (array, count) => {
     const shuffledArray = array.slice().sort(() => Math.random() - 0.5);
     return shuffledArray.slice(0, count);
 };
-export const getQuizService = async ({ categoryId, difficulty, amount, }) => {
+const getQuizService = async ({ categoryId, difficulty, amount, }) => {
     try {
-        const category = await prisma.category.findUnique({
+        const category = await prisma_1.prisma.category.findUnique({
             where: {
                 id: categoryId,
             },
         });
-        const quiz = await prisma.question.findMany({
+        const quiz = await prisma_1.prisma.question.findMany({
             where: {
                 category: category !== null ? category.name : 'general',
                 difficulty: +difficulty,
             },
         });
         const shuffledQuiz = getRandomQuestions(quiz, +amount);
-        const quizId = randomUUID();
+        const quizId = (0, crypto_1.randomUUID)();
         // store quiz details: id, questionId, category, difficulty, amount.
         // mark questions as used.
         return {
-            id: quizId,
+            id: quizId, // create id for custom quiz.
             quiz: shuffledQuiz,
         };
     }
     catch (error) {
-        printError(error, getQuizService.name);
+        (0, utils_1.printError)(error, exports.getQuizService.name);
         throw error;
     }
 };
-export const getWeeklyQuizService = async () => {
+exports.getQuizService = getQuizService;
+const getWeeklyQuizService = async () => {
     try {
-        const totalAvailableQuestions = await prisma.question.count({});
-        const quiz = await prisma.question.findMany({
+        const totalAvailableQuestions = await prisma_1.prisma.question.count({});
+        const quiz = await prisma_1.prisma.question.findMany({
             take: 10,
             skip: Math.floor(Math.random() * totalAvailableQuestions),
         });
@@ -44,12 +48,13 @@ export const getWeeklyQuizService = async () => {
         // store quiz details: id, questionId, category, difficulty, amount.
         // mark questions as used.
         return {
-            id: null,
+            id: null, // create id for custom quiz.
             quiz,
         };
     }
     catch (error) {
-        printError(error, getQuizService.name);
+        (0, utils_1.printError)(error, exports.getQuizService.name);
         throw error;
     }
 };
+exports.getWeeklyQuizService = getWeeklyQuizService;
