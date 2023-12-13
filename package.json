@@ -6,8 +6,13 @@
   "scripts": {
     "start": "nodemon -r ./src/index.ts",
     "type-check": "tsc --project ./tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --project ./tsconfig.json"
   },
+  "pre-commit": [
+    "type-check",
+    "build"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
