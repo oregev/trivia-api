@@ -1,0 +1,1 @@
+export { axiosFn } from './axios';
