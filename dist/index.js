@@ -17,3 +17,4 @@ const handleListen = () => {
     console.log(`server is up and running on port: ${PORT}`);
 };
 exports.app.listen(PORT, handleListen);
+module.exports = exports.app;
