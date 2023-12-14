@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon -r ./src/index.ts",
-    "type-check": "tsc --project ./tsconfig.json",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.ts",
     "build": "rimraf dist && tsc",
-    "add-build": "git add dist"
+    "type-check": "tsc --project ./tsconfig.json",
+    "add-build": "git add dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "pre-commit": [
     "type-check",
@@ -17,12 +17,14 @@
   ],
   "author": "",
   "license": "ISC",
+  "keywords": [],
   "dependencies": {
     "axios": "^1.6.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "node-cron": "^3.0.3"
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.5"
   },
   "devDependencies": {
     "@prisma/client": "^5.6.0",
@@ -38,9 +40,7 @@
     "eslint-plugin-n": "^16.3.1",
     "eslint-plugin-promise": "^6.1.1",
     "nodemon": "^3.0.1",
-    "pre-commit": "^1.2.2",
     "prisma": "^5.6.0",
-    "rimraf": "^5.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^5.3.2"
   }

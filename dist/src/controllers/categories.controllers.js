@@ -22,18 +22,28 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCategoriesController = void 0;
 const utils_1 = require("../utils");
 const services = __importStar(require("../services/categories.services"));
-const getCategoriesController = async (_, res) => {
+const getCategoriesController = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const categories = await services.getCategoriesService();
+        const categories = yield services.getCategoriesService();
         res.json(categories);
     }
     catch (error) {
         (0, utils_1.printError)(error, exports.getCategoriesController.name);
         res.sendStatus(500);
     }
-};
+});
 exports.getCategoriesController = getCategoriesController;
+//# sourceMappingURL=categories.controllers.js.map

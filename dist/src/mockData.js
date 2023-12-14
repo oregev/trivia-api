@@ -83,3 +83,4 @@ exports.data = [
         incorrect_answers: ["2", "6", "3"],
     },
 ];
+//# sourceMappingURL=mockData.js.map

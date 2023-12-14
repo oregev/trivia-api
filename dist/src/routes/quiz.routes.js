@@ -31,3 +31,4 @@ exports.quizRouter.route('/').get(controller.getQuizController);
 exports.quizRouter
     .route('/weekly')
     .get(controller.getWeeklyQuizController);
+//# sourceMappingURL=quiz.routes.js.map

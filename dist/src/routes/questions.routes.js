@@ -30,3 +30,4 @@ exports.questionsRouter = (0, express_1.Router)();
 exports.questionsRouter
     .route('/')
     .get(controller.getQuestionsController);
+//# sourceMappingURL=questions.routes.js.map

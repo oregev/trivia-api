@@ -22,19 +22,29 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getQuestionsController = void 0;
 const utils_1 = require("../utils");
 const services = __importStar(require("../services/questions.services"));
-const getQuestionsController = async (req, res) => {
+const getQuestionsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const categoryId = req.query.categoryId;
     try {
-        const questions = await services.getQuestionsService({ categoryId });
+        const questions = yield services.getQuestionsService({ categoryId });
         res.json(questions);
     }
     catch (error) {
         (0, utils_1.printError)(error, exports.getQuestionsController.name);
         res.sendStatus(500);
     }
-};
+});
 exports.getQuestionsController = getQuestionsController;
+//# sourceMappingURL=questions.controllers.js.map

@@ -30,3 +30,4 @@ exports.categoriesRouter = (0, express_1.Router)();
 exports.categoriesRouter
     .route('/')
     .get(controller.getCategoriesController);
+//# sourceMappingURL=categories.routes.js.map

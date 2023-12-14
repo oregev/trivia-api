@@ -30,3 +30,4 @@ exports.resultsRouter = (0, express_1.Router)();
 exports.resultsRouter
     .route('/')
     .post(controller.postResultsController);
+//# sourceMappingURL=results.routes.js.map

@@ -14,3 +14,4 @@ exports.appRouter.use('/questions', questions_routes_1.questionsRouter);
 exports.appRouter.use('/categories', categories_routes_1.categoriesRouter);
 exports.appRouter.use('/results', results_routes_1.resultsRouter);
 exports.appRouter.use('/quiz', quiz_routes_1.quizRouter);
+//# sourceMappingURL=config.js.map

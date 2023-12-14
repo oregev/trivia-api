@@ -1,0 +1,1 @@
+{"version":3,"file":"quiz.routes.js","sourceRoot":"","sources":["../../../src/routes/quiz.routes.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;;;;;;;AAAA,qCAAsD;AACtD,4EAA8D;AAEjD,QAAA,UAAU,GAAG,IAAA,gBAAM,GAAE,CAAC;AAEnC,kBAAU,CAAC,KAAK,CAAC,GAAG,CAAC,CAAC,GAAG,CAAC,UAAU,CAAC,iBAAmC,CAAC,CAAC;AAC1E,kBAAU;KACP,KAAK,CAAC,SAAS,CAAC;KAChB,GAAG,CAAC,UAAU,CAAC,uBAAyC,CAAC,CAAC"}

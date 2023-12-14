@@ -10,3 +10,4 @@ exports.axiosFn = axios_1.default.create({
         'Content-Type': 'application/json',
     },
 });
+//# sourceMappingURL=axios.js.map
