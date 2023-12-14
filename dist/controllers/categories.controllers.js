@@ -47,7 +47,7 @@ const getCategoriesController = (_, res) => __awaiter(void 0, void 0, void 0, fu
             res.status(500).send({ message: 'prisma error' });
         }
         (0, utils_1.printError)(error, exports.getCategoriesController.name);
-        res.status(500).send({ message: 'error fetch categories' });
+        res.status(500).send({ message: `error fetch categories ${error}` });
     }
 });
 exports.getCategoriesController = getCategoriesController;

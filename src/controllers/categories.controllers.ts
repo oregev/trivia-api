@@ -16,6 +16,6 @@ export const getCategoriesController = async (
       res.status(500).send({ message: 'prisma error' });
     }
     printError(error, getCategoriesController.name);
-    res.status(500).send({ message: 'error fetch categories' });
+    res.status(500).send({ message: `error fetch categories ${error}` });
   }
 };
