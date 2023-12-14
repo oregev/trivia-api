@@ -1,12 +1,12 @@
 import express from 'express';
-import cors from 'cors';
+// import cors from 'cors';
 // import { appRouter } from './src/routes/config';
 
-const PORT = process?.env?.PORT ?? 8080;
 const app = express();
+const PORT = process?.env?.PORT ?? 8080;
 
-app.use(cors());
-app.use(express.json());
+// app.use(cors());
+// app.use(express.json());
 
 // app.use('/', appRouter);
 
