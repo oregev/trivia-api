@@ -1,5 +1,5 @@
 import type { question } from '@prisma/client';
-import { prisma } from '../../prisma';
+import { prisma } from '../prisma';
 import { printError } from '../utils';
 
 export const getQuestionsService = async ({

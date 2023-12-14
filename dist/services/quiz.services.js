@@ -11,7 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getWeeklyQuizService = exports.getQuizService = void 0;
 const crypto_1 = require("crypto");
-const prisma_1 = require("../../prisma");
+const prisma_1 = require("../prisma");
 const utils_1 = require("../utils");
 const getRandomQuestions = (array, count) => {
     const shuffledArray = array.slice().sort(() => Math.random() - 0.5);

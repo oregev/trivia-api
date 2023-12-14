@@ -1,6 +1,6 @@
 import type { question } from '@prisma/client';
 import { randomUUID } from 'crypto';
-import { prisma } from '../../prisma';
+import { prisma } from '../prisma';
 import { printError } from '../utils';
 
 const getRandomQuestions = (array: question[], count: number): question[] => {

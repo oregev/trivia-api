@@ -15,6 +15,9 @@
     "build",
     "add-build"
   ],
+  "prisma": {
+    "schema": "src/prisma/schema.prisma"
+  },
   "author": "",
   "license": "ISC",
   "keywords": [],
