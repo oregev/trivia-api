@@ -35,14 +35,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getCategoriesController = void 0;
 const utils_1 = require("../utils");
 const services = __importStar(require("../services/categories.services"));
+const client_1 = require("@prisma/client");
 const getCategoriesController = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const categories = yield services.getCategoriesService();
         res.json(categories);
     }
     catch (error) {
+        if (error instanceof client_1.Prisma.PrismaClientKnownRequestError) {
+            (0, utils_1.printError)(error, exports.getCategoriesController.name);
+            res.status(500).send({ message: 'prisma error' });
+        }
         (0, utils_1.printError)(error, exports.getCategoriesController.name);
-        res.sendStatus(500);
+        res.status(500).send({ message: 'error fetch categories' });
     }
 });
 exports.getCategoriesController = getCategoriesController;
