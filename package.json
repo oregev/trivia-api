@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "start:dev": "nodemon -r dotenv/config src/index.ts dotenv_config_path=.env.dev",
+    "start:prod": "nodemon -r dotenv/config src/index.ts dotenv_config_path=.env.prod",
     "build": "prisma generate && rimraf dist && tsc",
     "type-check": "tsc --project ./tsconfig.json",
     "add-build": "git add dist",
@@ -23,11 +24,13 @@
   "license": "ISC",
   "keywords": [],
   "dependencies": {
+    "@vercel/kv": "^1.0.1",
     "axios": "^1.6.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "pre-commit": "^1.2.2",
+    "redis": "^4.6.11",
     "rimraf": "^5.0.5"
   },
   "devDependencies": {
@@ -35,7 +38,6 @@
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^20.10.3",
-    "@types/node-cron": "^3.0.11",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
