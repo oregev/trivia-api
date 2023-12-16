@@ -10,7 +10,10 @@ export const getQuizController = async (
   const difficulty = req.query.difficulty as string;
   const amount = req.query.amount as string;
 
-  console.log('1', req.query);
+  if (!categoryId) {
+    res.status(400).send({ message: 'Bad request - missing categoryId' });
+    return;
+  }
 
   try {
     const quiz = await services.getQuizService({
@@ -18,6 +21,7 @@ export const getQuizController = async (
       difficulty,
       amount,
     });
+
     res.json(quiz);
   } catch (error) {
     printError(error, getQuizController.name);

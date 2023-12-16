@@ -2,10 +2,36 @@ import type { question } from '@prisma/client';
 import { randomUUID } from 'crypto';
 import { prisma } from '../prisma';
 import { printError } from '../utils';
+import { client, kv } from '../db';
 
 const getRandomQuestions = (array: question[], count: number): question[] => {
   const shuffledArray = array.slice().sort(() => Math.random() - 0.5);
   return shuffledArray.slice(0, count);
+};
+
+interface AnswerResult {
+  questionId: string;
+  correct: string;
+}
+
+interface Results {
+  quizId: string;
+  answers: AnswerResult[];
+}
+
+const getResults = (quizId: string, quiz: question[]): Results => {
+  const answers = quiz.reduce<AnswerResult[]>((acc, question) => {
+    acc.push({
+      questionId: question.id,
+      correct: question.correct,
+    });
+    return acc;
+  }, []);
+
+  return {
+    quizId,
+    answers,
+  };
 };
 
 export const getQuizService = async ({
@@ -37,11 +63,12 @@ export const getQuizService = async ({
     const shuffledQuiz = getRandomQuestions(quiz, +amount);
     const quizId = randomUUID();
 
-    // store quiz details: id, questionId, category, difficulty, amount.
-    // mark questions as used.
+    const results = getResults(quizId, shuffledQuiz);
+    // await client.set('results', JSON.stringify(results));
+    kv.set('results', results);
 
     return {
-      id: quizId, // create id for custom quiz.
+      id: quizId,
       quiz: shuffledQuiz,
     };
   } catch (error) {
