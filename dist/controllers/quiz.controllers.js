@@ -39,7 +39,10 @@ const getQuizController = (req, res) => __awaiter(void 0, void 0, void 0, functi
     const categoryId = req.query.categoryId;
     const difficulty = req.query.difficulty;
     const amount = req.query.amount;
-    console.log('1', req.query);
+    if (!categoryId) {
+        res.status(400).send({ message: 'Bad request - missing categoryId' });
+        return;
+    }
     try {
         const quiz = yield services.getQuizService({
             categoryId,

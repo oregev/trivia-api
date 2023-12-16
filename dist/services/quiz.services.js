@@ -13,9 +13,23 @@ exports.getWeeklyQuizService = exports.getQuizService = void 0;
 const crypto_1 = require("crypto");
 const prisma_1 = require("../prisma");
 const utils_1 = require("../utils");
+const db_1 = require("../db");
 const getRandomQuestions = (array, count) => {
     const shuffledArray = array.slice().sort(() => Math.random() - 0.5);
     return shuffledArray.slice(0, count);
+};
+const getResults = (quizId, quiz) => {
+    const answers = quiz.reduce((acc, question) => {
+        acc.push({
+            questionId: question.id,
+            correct: question.correct,
+        });
+        return acc;
+    }, []);
+    return {
+        quizId,
+        answers,
+    };
 };
 const getQuizService = ({ categoryId, difficulty, amount, }) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -32,10 +46,11 @@ const getQuizService = ({ categoryId, difficulty, amount, }) => __awaiter(void 0
         });
         const shuffledQuiz = getRandomQuestions(quiz, +amount);
         const quizId = (0, crypto_1.randomUUID)();
-        // store quiz details: id, questionId, category, difficulty, amount.
-        // mark questions as used.
+        const results = getResults(quizId, shuffledQuiz);
+        // await client.set('results', JSON.stringify(results));
+        db_1.kv.set('results', results);
         return {
-            id: quizId, // create id for custom quiz.
+            id: quizId,
             quiz: shuffledQuiz,
         };
     }
